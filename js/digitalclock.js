@@ -10,9 +10,11 @@ function currentTime() {
 
     let AmPm = "AM";
 
-    if(theHour > 12) {
+    if(theHour >= 12) {
         AmPm = "PM";
-        theHour = theHour % 12;
+    }
+    if(theHour > 12) {
+        theHour = theHour % 12
     }
 
     if(theHour < 10){
@@ -29,9 +31,24 @@ function currentTime() {
     document.getElementById('hour').innerHTML = theHour;
     document.getElementById('minute').innerHTML = theMinutes;
     document.getElementById('seconds').innerHTML = theSeconds;
+    document.getElementById('ampm').innerHTML = AmPm;
 
 
+    let evenSeconds = theSeconds % 2;
+
+    if(evenSeconds === 0) {
+        document.getElementById('colon1').style.color = "pink";
+        document.getElementById('colon2').style.color = "pink";
+
+    }
+    else {
+        document.getElementById('colon1').style.color = "white";
+        document.getElementById('colon2').style.color = "white";
+
+    }
+    
 }
+
 setInterval(() => {
     currentTime();
 }, 1000);
